@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baz Kirkuk - Wholesale Tire Company</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,800;0,900;1,800;1,900&family=Teko:wght@600;700&display=swap" rel="stylesheet">    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+:root {
+    --primary-navy: #090e1a;
+    --secondary-blue: #0292c6;
+    --text-dark: #090e1a;
+    --text-muted: #64748b;
+    --bg-white: #ffffff;
+    --bg-light: #f8fafc;
+    
+    /* Preloader Renkleri */
+    --loader-tire: rgb(55, 55, 55);
+    --loader-rim: rgb(126, 126, 126);   
+    --loader-wheel: rgb(128, 128, 128);
+
+    /* YENİ SPORTİF FONT AİLELERİ */
+    --font-sport: 'Teko', sans-serif;
+    --font-premium: 'Montserrat', sans-serif;
+}
+
+/* =========================================
+   1. HERO ALANI (DEVASA VE YIRTICI)
+   ========================================= */
+.main-word {
+    font-family: var(--font-sport) !important;
+    font-size: clamp(7rem, 16vw, 20rem) !important;
+    line-height: 0.75 !important;
+    color: var(--primary-navy);
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.sub-word {
+    font-family: var(--font-sport) !important;
+    font-size: clamp(3rem, 6vw, 7rem) !important;
+    color: #fdda10 !important;
+    text-transform: uppercase;
+    transform: rotate(180deg);
+    writing-mode: vertical-rl;
+    margin-left: -5px;
+    text-shadow: 2px 2px 0px rgba(9, 14, 26, 0.9);
+}
+
+/* =========================================
+   2. BAZ KIRKUK ÖZEL BAŞLIK TASARIMI
+   ========================================= */
+.baz-custom-header {
+    font-family: var(--font-sport) !important;
+    font-size: clamp(4rem, 8vw, 7rem) !important;
+    color: var(--primary-navy);
+    text-transform: uppercase;
+    line-height: 0.9;
+    position: relative;
+    display: inline-block;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.baz-custom-header::before {
+    content: '//';
+    color: #fdda10;
+    font-style: italic;
+    margin-right: 12px;
+    font-weight: 700;
+}
+
+.trusted-distributor-section .baz-custom-header,
+.glass-card-header .baz-custom-header {
+    color: #ffffff;
+}
+
+/* =========================================
+   3. İKİNCİL BAŞLIKLAR (Kartlar, Özellikler)
+   ========================================= */
+.feature-item h4, 
+.trusted-item h4, 
+.row-text h4,
+.uiv-fan-card .title {
+    font-family: var(--font-premium) !important;
+    font-weight: 900 !important;
+    font-style: italic;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
+        }
+
+        body {
+            font-family: 'Cairo', 'Inter', sans-serif;
+            overflow-x: hidden;
+            background-color: var(--bg-white);
+            color: var(--text-dark);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* --- DARK MODE LOGIC --- */
+        body.dark-mode {
+            --bg-white: #0a0f1d;
+            --bg-light: #121826;
+            --text-dark: #f8fafc;
+            --primary-navy: #f8fafc; 
+        }
+
+        body.dark-mode .navbar-clone,
+        body.dark-mode .breadcrumb-container,
+        body.dark-mode .hero-text-block,
+        body.dark-mode .featured-section,
+        body.dark-mode .fan-cards-section,
+        body.dark-mode .mobile-nav-overlay {
+            background-color: var(--bg-white);
+            color: var(--text-dark);
+        }
+
+        body.dark-mode .nav-links li a,
+        body.dark-mode .mobile-nav-overlay ul li a { color: var(--text-dark); }
+        body.dark-mode .hamburger .line { stroke: var(--text-dark); }
+        
+        body.dark-mode .uiv-fan-card .card { 
+            color: var(--text-dark); 
+            border-color: #333; 
+        }
+        body.dark-mode .uiv-fan-card .title,
+        body.dark-mode .feature-item h4 {
+            color: var(--text-dark) !important;
+        }
+
+        /* --- THEME TOGGLE SWITCH CSS --- */
+        .toggleSwitch {
+            width: 44px;
+            height: 44px;
+            display: grid;
+            border-radius: 50%;
+            position: relative;
+            place-items: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            line-height: 1;
+            overflow: hidden;
+        }
+
+        #checkboxInput {
+            display: none;
+        }
+
+        .icon {
+            grid-column: 1 / 1;
+            grid-row: 1 / 1;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            place-items: center;
+            z-index: 2;
+            transform-origin: center center;
+            transition: transform 500ms ease, opacity 300ms ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .icon--moon {
+            color: #212121;
+            background-color: #e8e8e8;
+            border-radius: 50%;
+        }
+        .icon--sun {
+            color: #e8e8e8;
+            background-color: #212121;
+            border-radius: 50%;
+        }
+
+        .icon--moon,
+        .icon--sun {
+            transform: rotate(0deg) scale(0);
+            opacity: 0;
+        }
+
+        #checkboxInput:not(:checked) + .toggleSwitch .icon--sun {
+            transform: rotate(360deg) scale(1);
+            opacity: 1;
+        }
+
+        #checkboxInput:not(:checked) + .toggleSwitch .icon--moon {
+            transform: rotate(0deg) scale(0);
+            opacity: 0;
+        }
+
+        #checkboxInput:checked + .toggleSwitch .icon--moon {
+            transform: rotate(360deg) scale(1);
+            opacity: 1;
+        }
+
+        #checkboxInput:checked + .toggleSwitch .icon--sun {
+            transform: rotate(0deg) scale(0);
+            opacity: 0;
+        }
+
+        #checkboxInput:active + .toggleSwitch {
+            transform: scale(0.94);
+        }
+        
+        .icon svg {
+            fill: currentColor !important;
+            width: 24px;
+            height: 24px;
+        }
+
+        /* --- HIZLI LOADER --- */
+        #loader-wrapper {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background-color: var(--bg-white);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 10000;
+            transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+        }
+
+        .loader { overflow: hidden; position: relative; }
+        .wheel-svg {
+            fill: var(--loader-wheel);
+            width: 80px; height: 80px;
+            animation: rolling 0.8s linear infinite;
+        }
+        #rim { fill: var(--loader-rim); }
+        #tire { fill: var(--loader-tire); }
+        .road {
+            position: absolute; margin-top: -4px;
+            width: 100%; height: 8px; border-radius: 4px;
+            background-color: var(--loader-tire);
+            animation: road-move 1.5s linear infinite;
+        }
+        @keyframes rolling { to { transform: rotate(-360deg); } }
+        @keyframes road-move { from { transform: translateX(140%); } to { transform: translateX(-100%); } }
+
+        main { opacity: 0; visibility: hidden; transition: opacity 0.4s ease-in-out; }
+        main.visible { opacity: 1; visibility: visible; }
+
+        /* --- NAVBAR CLONE --- */
+        .navbar-clone {
+            width: 100%;
+            padding: 0 4%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            background: var(--bg-white);
+            position: relative;
+            z-index: 1000;
+            direction: ltr;
+            height: 75px;
+            overflow: visible !important;
+            transition: background-color 0.3s ease;
+        }
+
+        .brand-logo-s {
+            position: absolute;
+            top: 0;
+            left: 4%;
+            background-color: rgb(253, 218, 16);
+            padding: 12px 18px 22px 18px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .brand-logo-s img {
+            width: 95px;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: clamp(20px, 2.5vw, 40px);
+            list-style: none;
+            margin: 0;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: var(--primary-navy);
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: var(--secondary-blue);
+        }
+
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links li a:hover::after,
+        .nav-links li a.active::after {
+            width: 100%;
+        }
+
+        .nav-right-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-left: clamp(20px, 2.5vw, 40px);
+        }
+
+        .breadcrumb-container {
+            margin-top: 2%;
+            width: 100%;
+            padding: 18px 4% 0 160px;
+            background-color: var(--bg-white);
+            direction: ltr;
+            z-index: 10;
+            position: relative;
+            transition: background-color 0.3s ease;
+        }
+
+        /* --- HAMBURGER MENU STYLES --- */
+        .hamburger {
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hamburger input { display: none; }
+
+        .hamburger svg {
+            height: 2.2em;
+            transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .line {
+            fill: none;
+            stroke: var(--primary-navy);
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 3;
+            transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+                        stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1),
+                        stroke 0.3s ease;
+        }
+
+        .line-top-bottom { stroke-dasharray: 12 63; }
+        .hamburger input:checked + svg { transform: rotate(-45deg); }
+        .hamburger input:checked + svg .line-top-bottom {
+            stroke-dasharray: 20 300;
+            stroke-dashoffset: -32.42;
+        }
+
+        /* --- MOBILE OVERLAY NAV --- */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: var(--bg-white);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0.25, 1, 0.5, 1), padding 0.3s ease, background-color 0.3s ease;
+            z-index: 99;
+            direction: ltr;
+        }
+
+        .mobile-nav-overlay.active {
+            max-height: 350px;
+            padding: 20px 0;
+            border-bottom: 2px solid var(--secondary-blue);
+        }
+
+        .mobile-nav-overlay ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .mobile-nav-overlay ul li a {
+            text-decoration: none;
+            color: var(--primary-navy);
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            transition: color 0.2s;
+        }
+
+        .mobile-nav-overlay ul li a:hover {
+            color: var(--secondary-blue);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero-clone {
+            position: relative;
+            width: 100%;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            padding: 20px 0 0 4%;
+            overflow: hidden;
+            direction: ltr;
+        }
+
+        .hero-text-block {
+            background-color: var(--bg-white);
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+            z-index: -1;
+            position: relative;
+            width: 55%;
+            transition: background-color 0.3s ease;
+        }
+
+        .text-row {
+            display: flex;
+            align-items: center;
+            gap: clamp(8px, 1.5vw, 20px);
+            line-height: 0.82;
+        }
+
+        .main-word {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(5.5rem, 13.5vw, 15rem);
+            color: var(--primary-navy);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sub-word {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2.2rem, 5vw, 5.2rem);
+            color: #8a99ad;
+            writing-mode: vertical-rl;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transform: rotate(180deg);
+            white-space: nowrap;
+        }
+
+        .car-wrapper {
+            position: absolute;
+            right: -22%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 78%;
+            max-width: 1400px;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .car-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            filter: drop-shadow(0 35px 45px rgba(0, 0, 0, 0.15));
+        }
+
+        /* --- FEATURED SECTION --- */
+        .featured-section {
+            padding: 100px 4% 80px;
+            text-align: center;
+            position: relative;
+            background: var(--bg-white);
+            direction: ltr;
+            transition: background-color 0.3s ease;
+        }
+
+        .section-slogan {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 5.5rem);
+            color: var(--primary-navy);
+            letter-spacing: 1px;
+            margin-bottom: 70px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .wheel-features-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: clamp(20px, 5vw, 80px);
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .bg-s-pattern {
+            position: absolute;
+            left: -3%;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(15rem, 35vw, 32rem);
+            color: #f1f5f9;
+            z-index: 1;
+            pointer-events: none;
+            line-height: 0;
+            user-select: none;
+        }
+
+        .feature-col {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(40px, 8vw, 100px);
+            z-index: 2;
+            width: 280px;
+        }
+
+        .feature-item h4 {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(1.3rem, 2vw, 2.2rem);
+            color: var(--primary-navy);
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        .center-tire-display {
+            width: clamp(260px, 30vw, 420px);
+            height: clamp(260px, 30vw, 420px);
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- SADE BRAND MARQUEE --- */
+        #marquee {
+            background: #090e1a;
+            padding: 1.5rem 0;
+            overflow: hidden;
+            direction: ltr;
+            position: relative;
+            width: 100%;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, transparent 100%);
+        }
+
+        .marquee-inner {
+            display: flex;
+            white-space: nowrap;
+            align-items: center;
+            width: max-content;
+            will-change: transform;
+        }
+
+        .marquee-item {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            padding: 0 30px;
+        }
+
+        .marquee-item img {
+            width: 200px;
+            height: 100px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            opacity: 0.6;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .marquee-item img:hover {
+            opacity: 1;
+            transform: scale(1.08);
+        }
+
+        /* --- FAN CARDS WHOLESALE CATEGORIES SECTION --- */
+        .fan-cards-section {
+            padding: 90px 4%;
+            background: var(--bg-white);
+            text-align: center;
+            direction: ltr;
+            transition: background-color 0.3s ease;
+        }
+
+        .fan-section-title {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            color: var(--primary-navy);
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .fan-section-sub {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 50px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .fan-cards-grid {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 40px;
+            flex-wrap: wrap;
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+
+        .uiv-fan-card {
+            --accent: var(--primary-navy);
+            --muted: #5a5a56;
+            --faint: #8a8a84;
+            --line: #d8d6cd;
+            --w: 260px;
+
+            display: inline-flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 10px;
+            font-family: "Inter", sans-serif;
+            text-align: left;
+        }
+
+        .uiv-fan-card .card {
+            width: var(--w);
+            color: var(--accent);
+            padding: 18px 16px 0;
+            border-left: 1px solid var(--line);
+            cursor: pointer;
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .uiv-fan-card .card:hover {
+            border-color: var(--secondary-blue);
+        }
+
+        .uiv-fan-card .badge {
+            display: inline-block;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            padding: 2px 7px;
+            margin-bottom: 16px;
+            border-radius: 4px;
+        }
+
+        .uiv-fan-card .dates {
+            font-size: 10.5px;
+            color: var(--secondary-blue);
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin: 0 0 8px;
+        }
+
+        .uiv-fan-card .title {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.5px;
+            margin: 0 0 8px;
+            text-transform: uppercase;
+            color: var(--primary-navy);
+        }
+
+        .uiv-fan-card .desc {
+            font-size: 12.5px;
+            color: var(--muted);
+            line-height: 1.45;
+            margin: 0 0 22px;
+        }
+
+        .uiv-fan-card .stack {
+            position: relative;
+            height: 140px;
+            margin: 22px 0 6px;
+            overflow: visible;
+        }
+
+        .uiv-fan-card .stack .sheet,
+        .uiv-fan-card .stack .art {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(9, 14, 26, 0.15);
+            transform-origin: 0% 100%;
+            transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.45s ease;
+        }
+
+        .uiv-fan-card .stack img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .uiv-fan-card .stack .sheet:nth-child(1) { transform: rotate(3.5deg); opacity: 0.85; }
+        .uiv-fan-card .stack .sheet:nth-child(2) { transform: rotate(7deg); opacity: 0.7; }
+        .uiv-fan-card .stack .sheet:nth-child(3) { transform: rotate(10.5deg); opacity: 0.5; }
+        .uiv-fan-card .stack .sheet:nth-child(4) { transform: rotate(14deg); opacity: 0.3; }
+        .uiv-fan-card .stack .art { transform: rotate(0deg); }
+
+        .uiv-fan-card .card:hover .stack .sheet:nth-child(1) { transform: rotate(7deg); }
+        .uiv-fan-card .card:hover .stack .sheet:nth-child(2) { transform: rotate(14deg); }
+        .uiv-fan-card .card:hover .stack .sheet:nth-child(3) { transform: rotate(21deg); }
+        .uiv-fan-card .card:hover .stack .sheet:nth-child(4) { transform: rotate(28deg); }
+        .uiv-fan-card .card:hover .stack .art { transform: rotate(-3deg); }
+
+        /* MOBİL UYUM */
+        @media (max-width: 992px) {
+            .fan-cards-grid { gap: 30px; }
+            .hamburger { display: flex; }
+            .hero-clone {
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                min-height: auto;
+                padding: 20px 4% 40px 4%;
+            }
+            .hero-text-block {
+                width: 100%;
+                align-items: flex-start;
+                margin-bottom: -35px;
+                margin-top: 20%;
+            }
+            .text-row {
+                width: 100%;
+                justify-content: flex-start;
+                margin-bottom: 5px;
+            }
+            .main-word {
+                font-size: clamp(3rem, 28vw, 9rem) !important;
+                line-height: 0.85 !important;
+            }
+            .sub-word { font-size: clamp(2rem, 10vw, 3.5rem) !important; }
+            .brand-logo-s {
+                padding: 8px 10px 14px 10px;
+                left: 4%;
+            }
+            .brand-logo-s img { width: 65px !important; }
+            
+            /* Mobilde menüyü düzgün itme */
+            .nav-right-actions {
+                position: relative;
+                z-index: 1002;
+                margin-left: auto;
+            }
+            .breadcrumb-container {
+                padding-left: 20px !important;
+                margin-left: 0 !important;
+            }
+            .car-wrapper {
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                width: 115%;
+                max-width: 150%;
+                margin: -133px 0 0 0;
+                left: -10%;
+            }
+            .wheel-features-grid { flex-direction: column; gap: 40px; }
+            .feature-col { width: 100%; gap: 30px; }
+            .brands-grid { grid-template-columns: 1fr; gap: 25px; }
+            .brand-card-item { height: 380px; }
+            .nav-links { display: none; }
+        }
+
+        @media (max-width: 576px) {
+            .brand-card-item { height: 320px; }
+        }
+
+        /* --- BREADCRUMB STYLES --- */
+        .breadcrumb-container {
+            width: 100%;
+            padding: 15px 4% 0 4%;
+            background-color: var(--bg-white);
+            direction: ltr;
+            z-index: 10;
+            position: relative;
+        }
+
+        .breadcrumb-list {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            list-style: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .breadcrumb-list a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .breadcrumb-list a:hover { color: var(--secondary-blue); }
+        .breadcrumb-list i { font-size: 0.7rem; color: #94a3b8; }
+        .breadcrumb-list li.active { color: var(--primary-navy); font-weight: 700; }
+
+        /* --- GLASSMORPHISM MAP & CONTACT SECTION --- */
+        #contact-about {
+            background: #090e1a;
+            position: relative;
+            direction: ltr;
+        }
+
+        .contact-map-wrapper {
+            position: relative;
+            width: 100%;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            padding: 60px 4%;
+        }
+
+        .map-bg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 1;
+        }
+
+        .map-bg iframe {
+            width: 100%; height: 100%;
+            border: none;
+            filter: grayscale(100%) invert(92%) contrast(90%);
+        }
+
+        .glass-contact-card {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 460px;
+            background: rgba(9, 14, 26, 0.82);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            padding: 45px 35px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .glass-pre {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--secondary-blue);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .glass-card-header h2 {
+            font-family: 'Anton', 'Cairo', sans-serif;
+            font-size: 2.8rem;
+            color: #ffffff;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        .glass-divider {
+            width: 45px;
+            height: 3px;
+            background: var(--secondary-blue);
+            margin: 15px 0 30px 0;
+        }
+
+        .glass-info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .glass-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+        }
+
+        .info-icon {
+            width: 46px; height: 46px;
+            background: rgba(2, 146, 198, 0.15);
+            color: var(--secondary-blue);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .info-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .info-label-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-label-row span:first-child {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(2, 146, 198, 0.18);
+            color: var(--secondary-blue);
+            font-size: 0.7rem !important;
+            font-weight: 800 !important;
+            padding: 2px 8px;
+            border-radius: 20px;
+            border: 1px solid rgba(2, 146, 198, 0.3);
+        }
+
+        .info-text a, .info-text p {
+            color: #ffffff;
+            font-size: 1.05rem;
+            font-weight: 600;
+            text-decoration: none;
+            margin: 0;
+            transition: color 0.2s;
+        }
+
+        .info-text a:hover { color: var(--secondary-blue); }
+        .info-text .sub-link { font-size: 0.92rem; color: #94a3b8; font-weight: 400; }
+
+        /* --- TRUSTED DISTRIBUTOR SECTION (NEW) --- */
+        .trusted-distributor-section {
+            background: #090e1a;
+            padding: 100px 4% 120px 4%;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            direction: ltr;
+        }
+
+        .trusted-container { max-width: 1250px; margin: 0 auto; }
+
+        .trusted-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(2, 146, 198, 0.15);
+            color: var(--secondary-blue);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border: 1px solid rgba(2, 146, 198, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .trusted-title {
+            font-family: 'Anton', 'Cairo', sans-serif;
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            color: #ffffff;
+            letter-spacing: 1px;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .trusted-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .trusted-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 40px 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .trusted-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary-blue);
+        }
+
+        .trusted-item i {
+            font-size: 2.5rem;
+            color: var(--secondary-blue);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .trusted-item h4 {
+            font-family: var(--font-premium);
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .trusted-item p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: #94a3b8;
+            line-height: 1.6;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .trusted-standards-strip {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .trusted-standards-strip span {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #64748b;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .trusted-standards-strip i {
+            color: var(--secondary-blue);
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom {
+            background: #060912;
+            text-align: center;
+            padding: 25px 4%;
+            color: #64748b;
+            font-size: 0.88rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* MOBİL & TABLET UYUMU */
+        @media (max-width: 992px) {
+            .contact-map-wrapper { flex-direction: column; padding: 0; min-height: auto; }
+            .glass-contact-card {
+                max-width: 100%;
+                border-radius: 0;
+                border-left: none; border-right: none;
+                backdrop-filter: none;
+                background: #090e1a;
+            }
+            .map-bg { position: relative; height: 350px; }
+            .trusted-grid { grid-template-columns: 1fr; gap: 20px; }
+            .trusted-item { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body data-barba="wrapper">
+
+    <!-- Loader -->
+    <div id="loader-wrapper">
+        <div class="loader">
+            <svg viewBox="0 0 254.532 254.532" class="wheel-svg">
+                <g>
+                    <path d="M127.267,0C57.092,0,0,57.091,0,127.266s57.092,127.266,127.267,127.266c70.174,0,127.266-57.091,127.266-127.266S197.44,0,127.267,0z M127.267,217.656c-49.922,0-90.391-40.468-90.391-90.39s40.469-90.39,90.391-90.39c49.92,0,90.39,40.468,90.39,90.39S177.186,217.656,127.267,217.656z" id="tire"></path>
+                    <path d="M127.267,48.578c-43.39,0-78.689,35.299-78.689,78.688c0,43.389,35.3,78.688,78.689,78.688c43.389,0,78.688-35.299,78.688-78.688C205.955,83.877,170.655,48.578,127.267,48.578z M195.878,122.249h-38.18c-0.78-4.825-2.686-9.275-5.435-13.079l26.954-26.954C188.679,93.112,194.771,106.996,195.878,122.249z M132.204,58.648c15.244,1.087,29.123,7.156,40.025,16.591l-26.948,26.949c-3.804-2.748-8.253-4.653-13.077-5.433V58.648z M122.329,58.648v38.106c-4.824,0.78-9.274,2.685-13.078,5.434L82.302,75.24C93.204,65.805,107.085,59.735,122.329,58.648z M75.313,82.217l26.955,26.954c-2.749,3.803-4.654,8.253-5.434,13.077h-38.18C59.761,106.996,65.853,93.113,75.313,82.217z M58.643,132.123h38.192c0.779,4.824,2.685,9.274,5.434,13.078l-27.029,27.029C65.788,161.308,59.714,147.398,58.643,132.123z M122.329,195.884c-15.285-1.09-29.197-7.188-40.113-16.666l27.035-27.035c3.804,2.749,8.254,4.654,13.078,5.434V195.884z M122.329,147.459v0.072c-2.131-0.518-4.131-1.36-5.953-2.474l0.047-0.047c-2.85-1.738-5.244-4.132-6.982-6.983l-0.046,0.046c-1.114-1.822-1.956-3.821-2.474-5.952h0.071c-0.385-1.585-0.611-3.233-0.611-4.937c0-1.704,0.227-3.352,0.611-4.937h-0.071c0.518-2.13,1.359-4.129,2.474-5.951l0.046,0.046c1.738-2.85,4.133-5.245,6.982-6.982l-0.047-0.047c1.822-1.114,3.822-1.957,5.953-2.474v0.072c1.586-0.385,3.233-0.612,4.938-0.612s3.352,0.227,4.938,0.612v-0.072c2.131,0.518,4.13,1.359,5.951,2.473l-0.047,0.047c2.851,1.737,5.245,4.132,6.983,6.982l0.046-0.046c1.115,1.822,1.957,3.822,2.475,5.953h-0.071c0.385,1.585,0.611,3.233,0.611,4.937c0,1.704-0.227,3.352-0.611,4.937h0.071c-0.518,2.131-1.359,4.131-2.475,5.953l-0.046-0.046c-1.738,2.85-4.133,5.244-6.983,6.982l0.047,0.046c-1.821,1.114-3.82,1.956-5.951,2.474v-0.072c-1.586,0.385-3.233,0.612-4.938,0.612S123.915,147.845,122.329,147.459z M132.204,195.884v-38.267c4.824-0.78,9.273-2.685,13.077-5.433l27.034,27.034C161.4,188.696,147.488,194.794,132.204,195.884z M179.292,172.23l-27.028-27.028c2.749-3.804,4.654-8.254,5.435-13.079h38.191C194.818,147.398,188.745,161.308,179.292,172.23z" id="rim"></path>
+                </g>
+            </svg>
+            <div class="road"></div>
+        </div>
+    </div>
+
+    <!-- Header Navbar -->
+    <header class="navbar-clone">
+        <a href="#" class="brand-logo-s"><img src="logo.png" alt="logo"></a>
+        
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="index.html#tires">Wholesale Catalog</a></li>
+            <li><a href="index.html#marquee">Brands</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="index.html#contact-about">Contact</a></li>
+        </ul>
+
+        <div class="nav-right-actions">
+            <!-- Theme Toggle Switch -->
+            <input id="checkboxInput" type="checkbox" />
+            <label class="toggleSwitch" for="checkboxInput">
+              <div class="icon icon--moon">
+                <svg class="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <div class="icon icon--sun">
+                <svg class="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"></path>
+                </svg>
+              </div>
+            </label>
+
+            <div class="action-icons">
+                <!-- SVG Hamburger Butonu -->
+                <label class="hamburger">
+                    <input type="checkbox" id="hamburger-toggle">
+                    <svg viewBox="0 0 32 32">
+                        <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+                        <path class="line" d="M7 16 27 16"></path>
+                    </svg>
+                </label>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobil Açılır Menü Paneli -->
+    <div class="mobile-nav-overlay" id="mobile-menu">
+        <ul>
+            <li><a href="index.html" class="mobile-link">Home</a></li>
+            <li><a href="index.html#tires" class="mobile-link">Wholesale Catalog</a></li>
+            <li><a href="index.html#marquee" class="mobile-link">Brands</a></li>
+            <li><a href="about.html" class="mobile-link">About Us</a></li>
+            <li><a href="index.html#contact-about" class="mobile-link">Contact</a></li>
+        </ul>
+    </div>
+
+    <main data-barba="container" data-barba-namespace="home">
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb-container" aria-label="breadcrumb">
+            <ol class="breadcrumb-list" id="breadcrumb-list">
+                <!-- JS Otomatik Dolduracak -->
+            </ol>
+        </nav>    
+
+        <!-- Hero Section -->
+        <section class="hero-clone">
+            <div class="hero-text-block gsap-fade-right">
+                <div class="text-row">
+                    <span class="main-word">BEST</span>
+                    <span class="sub-word">TIRES</span>
+                </div>
+                <div class="text-row">
+                    <span class="main-word">BULK</span>
+                    <span class="sub-word">PRICES</span>
+                </div>
+                <div class="text-row">
+                    <span class="main-word">GLOBAL</span>
+                    <span class="sub-word">SUPPLY</span>
+                </div>
+            </div>
+
+            <!-- Araba Görseli -->
+            <div class="car-wrapper gsap-fade-left">
+                <img src="car.png" alt="Porsche Wholesale Tires">
+            </div>
+        </section>
+
+        <!-- DRIVEN TO DELIVER QUALITY -->
+        <section class="featured-section">
+            <h2 class="section-slogan gsap-fade-up baz-custom-header">DRIVEN TO DELIVER QUALITY</h2>
+            <div class="wheel-features-grid">
+
+                <!-- Sol Özellikler -->
+                <div class="feature-col gsap-fade-right">
+                    <div class="feature-item">
+                        <h4>Largest Selection<br>of Wholesale Tires</h4>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Expert Technical<br>Support</h4>
+                    </div>
+                </div>
+
+                <!-- Merkez Dev Lastik -->
+                <div class="center-tire-display gsap-zoom">
+                   <img src="tire.png" alt="tire" style="width: 70%;">
+                </div>
+
+                <!-- Sağ Özellikler -->
+                <div class="feature-col gsap-fade-left">
+                    <div class="feature-item">
+                        <h4>100% Guaranteed<br>Quality Assurance</h4>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Fastest Direct<br>Container Delivery</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marquee Section -->
+        <section id="marquee">
+            <div class="marquee-inner" id="js-marquee">
+                <div class="marquee-item">
+                    <img src="Cordiant_logo.svg-removebg-preview.png" alt="Brand 1" class="marquee-brand-img">
+                    <img src="kenda-removebg-preview.png" alt="Brand 2" class="marquee-brand-img">
+                    <img src="JK-Tyre-logo-scaled.png" alt="Brand 3" class="marquee-brand-img">
+                    <img src="hifly-removebg-preview.png" alt="Brand 4" class="marquee-brand-img">
+                     <img src="rovelo-logo.webp" alt="Brand 4" class="marquee-brand-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURED WHOLESALE CATEGORIES (FAN CARDS) -->
+        <section class="fan-cards-section">
+            <h2 class="fan-section-title gsap-fade-up">WHOLESALE CATEGORIES</h2>
+            <p class="fan-section-sub gsap-fade-up">Explore our container-level tire distribution stacks</p>
+            
+            <div class="fan-cards-grid">
+                
+                <!-- CARD 1: PASSENGER & SUV -->
+                <div class="uiv-fan-card gsap-fade-up">
+                    <div class="card">
+                        <span class="badge">01</span>
+                        <p class="dates">PASSENGER & SUV</p>
+                        <p class="title">High Performance Series</p>
+                        <p class="desc">Engineered for luxury sedans and modern SUVs with ultra grip and noise reduction.</p>
+                        <div class="stack">
+                            <div class="sheet"><img src="https://images.unsplash.com/photo-1578844251758-2f71da64c96f?q=80&w=600&auto=format&fit=crop" alt="Passenger Tire"></div>
+                            <div class="sheet"><img src="https://images.unsplash.com/photo-1578844251758-2f71da64c96f?q=80&w=600&auto=format&fit=crop" alt="Passenger Tire"></div>
+                            <div class="sheet"><img src="https://images.unsplash.com/photo-1578844251758-2f71da64c96f?q=80&w=600&auto=format&fit=crop" alt="Passenger Tire"></div>
+                            <div class="sheet"><img src="https://images.unsplash.com/photo-1578844251758-2f71da64c96f?q=80&w=600&auto=format&fit=crop" alt="Passenger Tire"></div>
+                            <div class="art"><img src="https://images.unsplash.com/photo-1578844251758-2f71da64c96f?q=80&w=600&auto=format&fit=crop" alt="Passenger Tire"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 2: TRUCK & FLEET -->
+                <div class="uiv-fan-card gsap-fade-up">
+                    <div class="card">
+                        <span class="badge">02</span>
+                        <p class="dates">COMMERCIAL & FLEET</p>
+                        <p class="title">Heavy Duty Long-Haul</p>
+                        <p class="desc">Durable truck tread compounds built for extreme load capacity and max mileage.</p>
+                        <div class="stack">
+                            <div class="sheet"><img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=600&auto=format&fit=crop" alt="Commercial Tire"></div>
+                            <div class="sheet"><img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=600&auto=format&fit=crop" alt="Commercial Tire"></div>
+                            <div class="sheet"><img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=600&auto=format&fit=crop" alt="Commercial Tire"></div>
+                            <div class="sheet"><img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=600&auto=format&fit=crop" alt="Commercial Tire"></div>
+                            <div class="art"><img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=600&auto=format&fit=crop" alt="Commercial Tire"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 3: 4X4 & OFF-ROAD -->
+                <div class="uiv-fan-card gsap-fade-up">
+                    <div class="card">
+                        <span class="badge">03</span>
+                        <p class="dates">4X4 & OFF-ROAD</p>
+                        <p class="title">All-Terrain Conqueror</p>
+                        <p class="desc">Aggressive tread patterns designed for mud, sand, and heavy mountain terrains.</p>
+                        <div class="stack">
+                            <div class="sheet"><img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?q=80&w=600&auto=format&fit=crop" alt="Offroad Tire"></div>
+                            <div class="sheet"><img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?q=80&w=600&auto=format&fit=crop" alt="Offroad Tire"></div>
+                            <div class="sheet"><img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?q=80&w=600&auto=format&fit=crop" alt="Offroad Tire"></div>
+                            <div class="sheet"><img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?q=80&w=600&auto=format&fit=crop" alt="Offroad Tire"></div>
+                            <div class="art"><img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?q=80&w=600&auto=format&fit=crop" alt="Offroad Tire"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TRUSTED & VERIFIED DISTRIBUTOR SECTION -->
+        <section class="trusted-distributor-section">
+            <div class="trusted-container">
+                <div class="trusted-badge gsap-fade-up">
+                    <i class="fas fa-circle-check"></i> Verified & Authorized Wholesaler
+                </div>
+                <h2 class="trusted-title gsap-fade-up">Your Trusted Bulk <br>Supply Partner</h2>
+                
+                <div class="trusted-grid">
+                    <div class="trusted-item gsap-fade-up">
+                        <i class="fas fa-industry"></i>
+                        <h4>Direct Factory Imports</h4>
+                        <p>We source directly from world-class tire manufacturers, ensuring zero middlemen and optimal wholesale pricing.</p>
+                    </div>
+                    <div class="trusted-item gsap-fade-up">
+                        <i class="fas fa-shield-halved"></i>
+                        <h4>100% Quality Verified</h4>
+                        <p>Every shipment strictly meets international safety standards including ISO, E-MARK, DOT, and GCC requirements.</p>
+                    </div>
+                    <div class="trusted-item gsap-fade-up">
+                        <i class="fas fa-truck-fast"></i>
+                        <h4>Kirkuk Stock & Logistics</h4>
+                        <p>Holding extensive stock in our Kirkuk warehouse, we guarantee fast, reliable bulk delivery across the region.</p>
+                    </div>
+                </div>
+
+                <div class="trusted-standards-strip gsap-fade-up">
+                    <span><i class="fas fa-certificate"></i> ISO 9001:2015</span>
+                    <span><i class="fas fa-shield-halved"></i> E-MARK Certified</span>
+                    <span><i class="fas fa-award"></i> DOT Compliant</span>
+                    <span><i class="fas fa-file-contract"></i> GCC Standards</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- FULL-WIDTH MAP & GLASSMORPHISM CONTACT SECTION -->
+        <section id="contact-about">
+            <div class="contact-map-wrapper">
+                
+                <!-- Siyah-Beyaz / Koyu Filtreli Harita Background -->
+                <div class="map-bg">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3221.428!2d44.3808876!3d35.4411884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1554d70a7a34fdef%3A0x8c410d607d543de0!2sBaz%20Kirkuk!5e0!3m2!1str!2siq!4v1710000000000!5m2!1str!2siq" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+
+                <!-- Harita Üzerine Oturan Buzlu Cam (Glassmorphism) Kart -->
+                <div class="glass-contact-card gsap-fade-right">
+                    <div class="glass-card-header">
+                        <span class="glass-pre">CONTACT BAZ KIRKUK</span>
+                        <h2>Get In Touch</h2>
+                        <div class="glass-divider"></div>
+                    </div>
+
+                    <div class="glass-info-list">
+                        <!-- Phone / WhatsApp with Verified Badge -->
+                        <div class="glass-info-item">
+                            <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div class="info-text">
+                                <div class="info-label-row">
+                                    <span>Direct Phone / WhatsApp</span>
+                                    <span class="verified-badge"><i class="fas fa-circle-check"></i> Verified</span>
+                                </div>
+                                <a href="tel:+9647719639457" dir="ltr">+964 771 963 9457</a>
+                                <a href="tel:+9647702655580" dir="ltr" class="sub-link">+964 770 265 5580</a>
+                            </div>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="glass-info-item">
+                            <div class="info-icon"><i class="fas fa-location-dot"></i></div>
+                            <div class="info-text">
+                                <div class="info-label-row">
+                                    <span>Headquarters Location</span>
+                                </div>
+                                <p>Industrial Area, Kirkuk, Iraq</p>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="glass-info-item">
+                            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="info-text">
+                                <div class="info-label-row">
+                                    <span>Official Email</span>
+                                </div>
+                                <a href="mailto:info@bazkirkuk.com">info@bazkirkuk.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer Alt Bilgisi -->
+            <div class="footer-bottom">
+                &copy; 2026 Baz Kirkuk Wholesale Company. All Rights Reserved.
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@barba/core@2.9.7/dist/barba.umd.min.js"></script>
+
+    <script>
+    // --- 1. Lenis Smooth Scroll ---
+    const lenis = new Lenis({ duration: 1.2, smooth: true });
+    function raf(time) { 
+        lenis.raf(time); 
+        requestAnimationFrame(raf); 
+    }
+    requestAnimationFrame(raf);
+
+    // --- 2. GSAP & ScrollTrigger ---
+    gsap.registerPlugin(ScrollTrigger);
+
+    // --- 3. Preloader Fonksiyonları ---
+    function hidePreloader(container) {
+        const preloader = document.getElementById('loader-wrapper');
+        const currentMain = container ? container : document.querySelector('main');
+
+        setTimeout(() => {
+            if (preloader) {
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.visibility = 'hidden';
+                    if (currentMain) currentMain.classList.add('visible');
+                    initAnimations(container);
+                    generateBreadcrumb();
+                }, 300);
+            } else if (currentMain) {
+                currentMain.classList.add('visible');
+                initAnimations(container);
+                generateBreadcrumb();
+            }
+        }, 300);
+    }
+
+    function showPreloader() {
+        const preloader = document.getElementById('loader-wrapper');
+        if (preloader) {
+            preloader.style.visibility = 'visible';
+            preloader.style.opacity = '1';
+        }
+    }
+
+    // --- 4. Barba.js Yapılandırması ---
+    barba.init({
+        prevent: ({ el }) => el.hasAttribute('data-barba-prevent'),
+        transitions: [{
+            name: 'fast-transition',
+            leave() {
+                showPreloader();
+                return new Promise(resolve => setTimeout(resolve, 300));
+            },
+            enter(data) {
+                ScrollTrigger.getAll().forEach(t => t.kill());
+                window.scrollTo(0, 0);
+
+                const nextContainer = data.next.container;
+                hidePreloader(nextContainer);
+            }
+        }]
+    });
+
+    window.addEventListener('load', () => hidePreloader());
+
+    // --- 5. Sayfa Animasyonları ---
+    function initAnimations(scope) {
+        const context = scope || document;
+        ScrollTrigger.refresh();
+
+        gsap.from(context.querySelectorAll('.gsap-fade-right'), { x: -60, opacity: 0, duration: 1, ease: 'power3.out' });
+        gsap.from(context.querySelectorAll('.gsap-fade-left'), { x: 60, opacity: 0, duration: 1, ease: 'power3.out' });
+        
+        gsap.utils.toArray(context.querySelectorAll('.gsap-fade-up')).forEach(element => {
+            gsap.from(element, {
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: element,
+                    start: 'top 85%'
+                }
+            });
+        });
+
+        const marquee = context.querySelector('#js-marquee');
+        if (marquee) {
+            const marqueeItem = marquee.querySelector('.marquee-item');
+            if (marqueeItem && marquee.children.length === 1) {
+                marquee.appendChild(marqueeItem.cloneNode(true));
+                marquee.appendChild(marqueeItem.cloneNode(true));
+                marquee.appendChild(marqueeItem.cloneNode(true));
+            }
+            if (marqueeItem) {
+                const singleWidth = marqueeItem.offsetWidth;
+                gsap.to(marquee, {
+                    x: -singleWidth,
+                    duration: 15,
+                    ease: 'none',
+                    repeat: -1
+                });
+            }
+        }
+    }
+
+    // --- 6. Dynamic Breadcrumb Generator ---
+    function generateBreadcrumb() {
+        const breadcrumbList = document.getElementById('breadcrumb-list');
+        if (!breadcrumbList) return;
+
+        breadcrumbList.innerHTML = '';
+
+        const currentHash = window.location.hash;
+        const currentPath = window.location.pathname.split('/').filter(p => p && p !== 'index.html');
+
+        let activeTitle = '';
+
+        if (currentHash && currentHash !== '#') {
+            const sectionName = currentHash.replace('#', '');
+            if (sectionName === 'tires') activeTitle = 'Wholesale Catalog';
+            else if (sectionName === 'contact-about') activeTitle = 'Contact Us';
+            else activeTitle = sectionName.charAt(0).toUpperCase() + sectionName.slice(1);
+        } 
+        else if (currentPath.length > 0) {
+            let lastSegment = currentPath[currentPath.length - 1].replace('.html', '');
+            if (lastSegment !== 'index' && lastSegment !== '') {
+                activeTitle = lastSegment.replace('-', ' ');
+                activeTitle = activeTitle.charAt(0).toUpperCase() + activeTitle.slice(1);
+            }
+        }
+
+        if (!activeTitle) {
+            const homeActiveLi = document.createElement('li');
+            homeActiveLi.className = 'active';
+            homeActiveLi.setAttribute('aria-current', 'page');
+            homeActiveLi.textContent = 'Home';
+            breadcrumbList.appendChild(homeActiveLi);
+        } else {
+            const homeLi = document.createElement('li');
+            homeLi.innerHTML = '<a href="index.html">Home</a>';
+            breadcrumbList.appendChild(homeLi);
+
+            const separator = document.createElement('li');
+            separator.innerHTML = '<i class="fas fa-chevron-right"></i>';
+            breadcrumbList.appendChild(separator);
+
+            const activeLi = document.createElement('li');
+            activeLi.className = 'active';
+            activeLi.setAttribute('aria-current', 'page');
+            activeLi.textContent = activeTitle;
+            breadcrumbList.appendChild(activeLi);
+        }
+    }
+
+    window.addEventListener('hashchange', generateBreadcrumb);
+
+    // --- 7. Hamburger Menü & Scroll Dinleyicisi ---
+    lenis.on('scroll', () => {
+        const hamburgerToggle = document.getElementById('hamburger-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (hamburgerToggle && hamburgerToggle.checked) {
+            hamburgerToggle.checked = false;
+            if (mobileMenu) {
+                mobileMenu.classList.remove('active');
+            }
+        }
+    });
+
+    document.addEventListener('change', (e) => {
+        if (e.target.id === 'hamburger-toggle') {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('active', e.target.checked);
+            }
+        }
+    });
+
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('mobile-link')) {
+            const hamburgerToggle = document.getElementById('hamburger-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (hamburgerToggle) hamburgerToggle.checked = false;
+            if (mobileMenu) mobileMenu.classList.remove('active');
+        }
+    });
+
+    // --- 8. Theme Toggle & Persistent Dark Mode Logic ---
+    const themeToggle = document.getElementById('checkboxInput');
+    const body = document.body;
+    
+    // Tarayıcı hafızasını kontrol et (Önceki giriş var mı?)
+    if (localStorage.getItem('theme') === 'dark') {
+        body.classList.add('dark-mode');
+        themeToggle.checked = true;
+    }
+
+    // Toggle butonuna tıklandığında temayı değiştir
+    themeToggle.addEventListener('change', () => {
+        if (themeToggle.checked) {
+            body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            body.classList.remove('dark-mode');
+            localStorage.setItem('theme', 'light');
+        }
+    });
+    </script>
+</body>
+</html>
